@@ -1,0 +1,19 @@
+{
+  "name": "ddns-aws-lambda",
+  "version": "1.0.0",
+  "scripts": {},
+  "author": "Rogelio Orts",
+  "dependencies": {
+    "@types/aws-lambda": "^8.10.47"
+  },
+  "devDependencies": {
+    "aws-sdk": "^2.653.0",
+    "prettier": "2.0.2",
+    "serverless": "^1.67.0",
+    "serverless-offline": "^6.1.4",
+    "serverless-webpack": "^5.3.1",
+    "ts-loader": "^6.2.2",
+    "typescript": "^3.8.3",
+    "webpack": "^4.42.1"
+  }
+}
