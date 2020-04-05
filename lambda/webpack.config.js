@@ -1,4 +1,5 @@
 const path = require("path");
+const nodeExternals = require("webpack-node-externals");
 const slsw = require("serverless-webpack");
 const isLocal = slsw.lib.webpack.isLocal;
 
@@ -15,7 +16,7 @@ module.exports = {
     path: path.join(__dirname, ".webpack"),
     filename: "[name].js",
   },
-  externals: ["aws-sdk"],
+  externals: [nodeExternals()],
   module: {
     rules: [
       {
