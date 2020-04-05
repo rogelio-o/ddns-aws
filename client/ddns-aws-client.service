@@ -1,0 +1,9 @@
+[Unit]
+Description=DDNS AWS client
+Wants=ddns-aws-client.timer
+
+[Service]
+ExecStart=/usr/bin/ddns-aws-client.sh --api-key <API_KEY> --url <URL>
+
+[Install]
+WantedBy=multi-user.target
