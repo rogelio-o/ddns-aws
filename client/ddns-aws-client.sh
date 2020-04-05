@@ -67,7 +67,7 @@ cacheFile="$cacheFileDir$cacheFileExt"
 
 if [ -f "$cacheFile" ]; then
     cached_myIp=$(cat $cacheFile)
-    echo "$(basename $0): Found a cached IP $cached_myIp."
+    echo "$(basename $0): Found a cached IP $cached_myIp"
 else
     cached_myIp=""
 fi
