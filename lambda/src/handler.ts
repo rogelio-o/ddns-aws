@@ -27,27 +27,31 @@ const updateRecordSet = (
 
 const set = async (event: APIGatewayEvent) => {
   const ip = event.requestContext.identity.sourceIp;
+  const lastIp = (event.queryStringParameters || {}).last_ip;
+
   try {
-    await updateRecordSet({
-      HostedZoneId: process.env.HOSTED_ZONE_ID || "",
-      ChangeBatch: {
-        Changes: [
-          {
-            Action: "UPSERT",
-            ResourceRecordSet: {
-              Name: process.env.RECORD_NAME || "",
-              Type: "A",
-              TTL: 300,
-              ResourceRecords: [
-                {
-                  Value: ip,
-                },
-              ],
+    if (!lastIp || lastIp === "" || lastIp !== ip) {
+      await updateRecordSet({
+        HostedZoneId: process.env.HOSTED_ZONE_ID || "",
+        ChangeBatch: {
+          Changes: [
+            {
+              Action: "UPSERT",
+              ResourceRecordSet: {
+                Name: process.env.RECORD_NAME || "",
+                Type: "A",
+                TTL: 300,
+                ResourceRecords: [
+                  {
+                    Value: ip,
+                  },
+                ],
+              },
             },
-          },
-        ],
-      },
-    });
+          ],
+        },
+      });
+    }
 
     return {
       statusCode: 200,
