@@ -25,31 +25,7 @@ const updateRecordSet = (
   });
 };
 
-const checkAuthorization = (authorizationHeader?: string): boolean => {
-  if (!authorizationHeader) {
-    return false;
-  }
-
-  var encodedCreds = authorizationHeader.split(" ")[1];
-  var plainCreds = new Buffer(encodedCreds, "base64").toString().split(":");
-  var username = plainCreds[0];
-  var password = plainCreds[1];
-
-  return (
-    process.env.AUTH_USERNAME === username &&
-    process.env.AUTH_PASSWORD === password
-  );
-};
-
 const set = async (event: APIGatewayEvent) => {
-  const authorizationHeader = event.headers.Authorization;
-
-  if (!checkAuthorization(authorizationHeader)) {
-    return {
-      statusCode: 403,
-    };
-  }
-
   const ip = event.requestContext.identity.sourceIp;
   try {
     await updateRecordSet({

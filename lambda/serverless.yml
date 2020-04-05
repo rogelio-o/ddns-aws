@@ -3,7 +3,6 @@ app: ddns-aws-lambda
 
 plugins:
   - serverless-webpack
-  - serverless-dotenv-plugin
   - serverless-offline
 
 package:
@@ -22,6 +21,8 @@ provider:
       Action:
         - "route53:ChangeResourceRecordSets"
       Resource: arn:aws:route53:::hostedzone/${env:HOSTED_ZONE_ID}
+  apiKeys:
+    - client
 
 functions:
   ddns:
@@ -29,9 +30,8 @@ functions:
     environment:
       HOSTED_ZONE_ID: ${env:HOSTED_ZONE_ID}
       RECORD_NAME: ${env:RECORD_NAME}
-      AUTH_USERNAME: ${env:AUTH_USERNAME}
-      AUTH_PASSWORD: ${env:AUTH_PASSWORD}
     events:
       - http:
           path: ""
           method: POST
+          private: true
