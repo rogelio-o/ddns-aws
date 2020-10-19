@@ -35,3 +35,11 @@ Follow the next steps to configure the client:
 - `sudo systemctl enable ddns-aws-client.timer`
 
 It can be checked that the timer is running with command: `sudo systemctl status ddns-aws-client`.
+
+# Docker
+
+Run client executing the following command:
+
+```
+docker run ddns-aws-client:latest -v /tmp/ddns_cache/:/tmp/ddns_cache/ --api-key <API_KEY> --url <URL>
+```

@@ -42,11 +42,7 @@ while [[ $# -ge 1 ]]; do
             if [ -z "$2" ] ; then
                 fail "\"$1\" argument needs a value."
             fi
-            if [[ "$2" == "https://"* ]]; then
-            	myAPIURL=$2
-            else
-            	myAPIURL="https://"$2
-            fi
+            myAPIURL=$2
             shift
             ;;
         *)
