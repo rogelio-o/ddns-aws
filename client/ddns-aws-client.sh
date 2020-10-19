@@ -68,9 +68,10 @@ else
     cached_myIp=""
 fi
 
-myIp=$(curl -q --ipv4 -s -d '' -H "x-api-key: $apiKey" "$myAPIURL?last_ip=$cached_myIp" | jq -r '.return_message //empty')
+response=$(curl -q --ipv4 -s -d '' -H "x-api-key: $apiKey" "$myAPIURL?last_ip=$cached_myIp")
+myIp=$(echo $response | jq -r '.return_message //empty')
 
-[ -z "$myIp" ] && fail "Couldn't find your public IP"
+[ -z "$myIp" ] && fail "Couldn't find your public IP: $response"
 
 echo "$myIp" > $cacheFile
 echo "$(basename $0): Host updated to IP $myIp"

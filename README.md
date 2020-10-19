@@ -43,3 +43,11 @@ Run client executing the following command:
 ```
 docker run rogelioo/ddns-aws-client:latest -v /tmp/ddns_cache/:/tmp/ddns_cache/ --api-key <API_KEY> --url <URL>
 ```
+
+# Docker
+
+Replace `<API_URL>` from `client/k8s.yaml`, create PVC `ddns-aws-client` with 500Ki, and run the following command:
+
+```
+kubectl apply -f client/k8s.yaml
+```

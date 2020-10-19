@@ -1,4 +1,4 @@
-export LATEST_RELEASE_VERSION=1.0.0
+export LATEST_RELEASE_VERSION=1.0.2
 export DOCKER_CLI_EXPERIMENTAL=enabled
 export DOCKER_BUILD_OPTS=--no-cache --compress
 export DOCKER_MULTI_ARCH=linux/arm,linux/amd64,linux/arm64,linux/ppc64le,linux/s390x,linux/386
