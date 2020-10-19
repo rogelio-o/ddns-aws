@@ -41,5 +41,5 @@ It can be checked that the timer is running with command: `sudo systemctl status
 Run client executing the following command:
 
 ```
-docker run ddns-aws-client:latest -v /tmp/ddns_cache/:/tmp/ddns_cache/ --api-key <API_KEY> --url <URL>
+docker run rogelioo/ddns-aws-client:latest -v /tmp/ddns_cache/:/tmp/ddns_cache/ --api-key <API_KEY> --url <URL>
 ```
