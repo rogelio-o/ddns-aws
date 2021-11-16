@@ -7,7 +7,7 @@
     "@types/aws-lambda": "^8.10.47"
   },
   "devDependencies": {
-    "aws-sdk": "^2.653.0",
+    "aws-sdk": "^2.814.0",
     "prettier": "2.0.2",
     "serverless": "^1.67.0",
     "serverless-offline": "^6.1.4",
